@@ -1,0 +1,10 @@
+@use './variables' as *;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $mainBackground;
+  color: white;
+}
