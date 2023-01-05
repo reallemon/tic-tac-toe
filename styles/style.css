@@ -5,4 +5,48 @@
 body {
   background-color: #111827;
   color: white;
+}
+
+.gameboard {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-areas: ".... players players players players ." "game game    game    game    game    game" "game game    game    game    game    game" "game game    game    game    game    game";
+}
+
+.players {
+  grid-area: players;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+}
+
+.player {
+  border: 1px solid #414868;
+  background: #24283b;
+  font-size: 2rem;
+  padding: 0.4em;
+  border-radius: 0.5em;
+}
+
+.active {
+  background: #414868;
+}
+
+.gameGrid {
+  grid-area: game;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2vh 0;
+  justify-items: center;
+}
+
+.tile {
+  border: 1px solid #414868;
+  height: 20vh;
+  background: #24283b;
+  text-align: center;
+  font-size: 8vw;
+  width: 10vw;
 }/*# sourceMappingURL=style.css.map */

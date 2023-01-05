@@ -10,7 +10,25 @@
       href="https://necolas.github.io/normalize.css/latest/normalize.css"
     />
     <link rel="stylesheet" href="styles/style.css" />
-    <script src="index.js"></script>
+    <script src="index.js" defer></script>
   </head>
-  <body></body>
+  <body>
+    <div class="gameboard">
+      <div class="players">
+        <div class="player active">Player X</div>
+        <div class="player">Player O</div>
+      </div>
+      <div class="gameGrid">
+        <div class="tile" data-row="0" data-col="0"></div>
+        <div class="tile" data-row="0" data-col="1"></div>
+        <div class="tile" data-row="0" data-col="2"></div>
+        <div class="tile" data-row="1" data-col="0"></div>
+        <div class="tile" data-row="1" data-col="1"></div>
+        <div class="tile" data-row="1" data-col="2"></div>
+        <div class="tile" data-row="2" data-col="0"></div>
+        <div class="tile" data-row="2" data-col="1"></div>
+        <div class="tile" data-row="2" data-col="2"></div>
+      </div>
+    </div>
+  </body>
 </html>

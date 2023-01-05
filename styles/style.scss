@@ -8,3 +8,52 @@ body {
   background-color: $mainBackground;
   color: white;
 }
+
+.gameboard {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+    '.... players players players players .'
+    'game game    game    game    game    game'
+    'game game    game    game    game    game'
+    'game game    game    game    game    game';
+}
+
+.players {
+  grid-area: players;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+}
+
+.player {
+  border: 1px solid $lightAccent;
+  background: $darkAccent;
+  font-size: 2rem;
+  padding: 0.4em;
+  border-radius: 0.5em;
+}
+
+.active {
+  background: $lightAccent;
+}
+
+.gameGrid {
+  grid-area: game;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2vh 0;
+  justify-items: center;
+}
+
+.tile {
+  border: 1px solid $lightAccent;
+  height: 20vh;
+  background: $darkAccent;
+  text-align: center;
+  font-size: 8vw;
+  width: 10vw;
+}
