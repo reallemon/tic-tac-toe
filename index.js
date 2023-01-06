@@ -80,7 +80,7 @@ const PlayerFactory = (playerSymbol) => {
 const Game = (() => {
   const _playerX = PlayerFactory('X');
   const _playerO = PlayerFactory('O');
-  const currentPlayer = _playerX;
+  let currentPlayer = _playerX;
 
   (() => {
     document.querySelectorAll('.tile').forEach((tile) => {
@@ -95,11 +95,28 @@ const Game = (() => {
     });
   })();
 
+  function switchPlayers() {
+    currentPlayer = currentPlayer === _playerX ? _playerO : _playerX;
+  }
+
+  function toggleActivePlayer() {
+    const playerX = document.querySelector('#playerX');
+    const playerO = document.querySelector('#playerO');
+    playerX.classList.toggle('active');
+    playerO.classList.toggle('active');
+  }
+
   const nextTurn = () => {
-    Game.currentPlayer = Game.currentPlayer === _playerX ? _playerO : _playerX;
+    toggleActivePlayer();
+    switchPlayers();
 
     return Game.currentPlayer;
   };
 
-  return { currentPlayer, nextTurn };
+  return {
+    get currentPlayer() {
+      return currentPlayer;
+    },
+    nextTurn,
+  };
 })();
