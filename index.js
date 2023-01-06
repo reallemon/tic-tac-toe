@@ -76,3 +76,30 @@ const PlayerFactory = (playerSymbol) => {
 
   return { symbol, markTile };
 };
+
+const Game = (() => {
+  const _playerX = PlayerFactory('X');
+  const _playerO = PlayerFactory('O');
+  const currentPlayer = _playerX;
+
+  (() => {
+    document.querySelectorAll('.tile').forEach((tile) => {
+      const row = tile.getAttribute('data-row');
+      const col = tile.getAttribute('data-col');
+
+      tile.addEventListener('click', () => {
+        const { symbol } = Game.currentPlayer;
+        Events.emit('updateTile', { row, col, symbol });
+        Game.nextTurn();
+      });
+    });
+  })();
+
+  const nextTurn = () => {
+    Game.currentPlayer = Game.currentPlayer === _playerX ? _playerO : _playerX;
+
+    return Game.currentPlayer;
+  };
+
+  return { currentPlayer, nextTurn };
+})();
