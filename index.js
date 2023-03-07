@@ -38,11 +38,45 @@ const GameBoard = (() => {
 
   const getBoardState = () => _board;
 
+  const checkForWin = () => {
+    const board = getBoardState();
+
+    for (let row = 0; row < board.length; row++) {
+      if (board[row][0] === board[row][1] && board[row][1] === board[row][2]) {
+        return board[row][0];
+      }
+    }
+
+    for (let col = 0; col < board[0].length; col++) {
+      if (board[0][col] === board[1][col] && board[1][col] === board[2][col]) {
+        return board[0][col];
+      }
+    }
+
+    if (board[0][0] === board[1][1] && board[1][1] === board[2][2]) {
+      return board[0][0];
+    }
+    if (board[2][0] === board[1][1] && board[1][1] === board[0][2]) {
+      return board[2][0];
+    }
+
+    return null;
+  };
+
   const _setTile = ({ row, col, symbol }) => {
     if (_board[row][col] !== null) throw new SyntaxError('Tile is already set');
 
     _board[row][col] = symbol;
     Events.emit('updateBoard');
+    const winner = checkForWin();
+    if (winner) alert(winner);
+
+    if (
+      getBoardState()
+        .flat()
+        .every((tile) => tile !== null)
+    )
+      alert('Tie');
   };
 
   const render = () => {
